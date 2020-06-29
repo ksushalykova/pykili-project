@@ -10,7 +10,7 @@ import time
 
 TOKEN = '1131392983:AAEX-qE7vH1ikK_KW_fCjCzUEjK2UZtgN_M'
 
-START_MESSAGE = 'Привет!\nЯ бот, помогающий найти съёмное жильё на авито. Так что выбирай, что хочешь снимать :)'
+START_MESSAGE = 'Привет!\nЯ бот, помогающий найти съёмное жильё на авито. Так что выбирайте, что хотите снимать :)'
 
 UNKNOWN_MESSAGE = 'Даже не знаю, что Вам ответить. Попробуйте /start'
 
@@ -28,7 +28,7 @@ def handle_space(update, context):
     global r_or_s
     r_or_s = update.message.text
     r_or_s.lower()
-    message = 'Отлично! Сколько комнат? Если неважно, напиши "-".'
+    message = 'Отлично! Сколько комнат? Если неважно, напишите "-".'
     update.message.reply_text(message)
     return "next0"
 
@@ -105,7 +105,7 @@ def room_number(update, context):
     global rm_nmbr
     rm_nmbr = update.message.text
     rm_nmbr.lower()
-    message = 'Чудесно, а что насчёт площади? Напиши цифру в м² без пробелов. Для пропуска пиши "-".'
+    message = 'А какая площадь помещения (+- 10 м²)? Напишите цифру в м² без пробелов. Для пропуска пишите "-".'
     update.message.reply_text(message)
     
     return "next1"
@@ -114,7 +114,7 @@ def square(update, context):
     global sqr
     sqr = update.message.text
     update.message.reply_text(
-        'Выбери оплату: 1 - только за сутки, 2 - только за месяц, 3 - за месяц, но с учётом посуточных предложений',
+        'Выберите оплату: 1 - только за сутки, 2 - только за месяц, 3 - за месяц, но с учётом посуточных предложений',
         reply_markup=ReplyKeyboardMarkup.from_column(ALLOWED_PERIODS)
     )
         
@@ -123,7 +123,7 @@ def square(update, context):
 def daymonth(update, context):
     global dm
     dm = update.message.text
-    message = 'А теперь укажи верхнюю границу цены в рублях без пробелов (просто циферку). Если в предыдущем вопросе ты выбрал 3, то сумму укажи в рублях в месяц.'
+    message = 'А теперь укажите верхнюю границу цены в рублях без пробелов (просто цифру). Если в предыдущем вопросе выбрано 3, то сумму укажите в рублях в месяц.'
     update.message.reply_text(message)
 
     return "next3"
@@ -131,7 +131,7 @@ def daymonth(update, context):
 def price(update, context):
     global prc
     prc = update.message.text
-    message = 'Если есть предпочтения по точному адресу, то напиши только название - улицы, или проспекта, или проезда, или переулка, или района, или посёлка в Московской области, или площади и т. д. Для пропуска этого пункта жми "-".'
+    message = 'Если есть предпочтения по точному адресу, то напишите только название - улицы, или проспекта, или проезда, или переулка, или района, или посёлка в Московской области и т. д. Для пропуска этого пункта жмите "-".'
     update.message.reply_text(message)
 
     return "next4"
@@ -139,7 +139,7 @@ def price(update, context):
 def address(update, context):
     global ddrss
     ddrss = update.message.text
-    message = 'Название ближайшего метро? Напиши "-" для пропуска этого пункта.'
+    message = 'Какое ближайшее метро (название)? Напишите "-" для пропуска этого пункта.'
     update.message.reply_text(message)
 
     return "next5"
@@ -155,7 +155,7 @@ def metro(update, context):
 def metro_way(update, context):
     global mtrw
     mtrw = update.message.text
-    message = 'Класс, скоро будут результаты. Напиши "ок" для подтверждения)'
+    message = 'Напишите "ок" для просмотра результатов)'
     update.message.reply_text(message)
 
     return "next7"
@@ -236,7 +236,7 @@ def good_hrefs(update, context):
         update.message.reply_text(message)
 
     if message == 'Квартиры для Вас:\n':
-        message = 'К сожалению, подходящих вариантов не найдено ('
+        message = 'К сожалению, подходящих вариантов не найдено.'
         
         update.message.reply_text(message)
 
